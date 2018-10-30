@@ -1,5 +1,10 @@
 # Slurp v1
 
+https://raw.githubusercontent.com/swightwick/Slurp-electron/master/slurp-screenshot.png
+
+![alt text](https://raw.githubusercontent.com/swightwick/Slurp-electron/master/slurp-screenshot.png "Slurp")
+
+
 A UI for executing Gulp commands. In house tool for Gravity London.
 
 Features available
