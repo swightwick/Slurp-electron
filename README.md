@@ -1,7 +1,5 @@
 # Slurp v1
 
-https://raw.githubusercontent.com/swightwick/Slurp-electron/master/slurp-screenshot.png
-
 ![alt text](https://raw.githubusercontent.com/swightwick/Slurp-electron/master/slurp-screenshot.png "Slurp")
 
 
@@ -12,7 +10,6 @@ Features available
 - `NPM install` - Globally install required NPM packages with one click.
 - `NPM Link` - Link required NPM packages to RAID project directory.
 - `Compile Sass` - Complile SASS for all projects in current folder.
-- `Sass` - Complile SASS for all projects in current folder.
 - `Package` - Run package Gulp task for production.
 - `Viewer` - Run custom node page viewer script.
 
