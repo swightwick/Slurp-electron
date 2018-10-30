@@ -2,14 +2,201 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>SSlllluurrpppp</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <style>
+      html{
+        height: 100%;
+      }
+      body{
+        text-align: center;
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #444444;
+        height: calc(100% - 10px);
+        min-height: 600px;
+        border: 5px solid #cf4647;
+      }
+      .container{
+        padding: 2rem 0;
+      }
+      #path{
+        padding: 0 0 2rem 0;
+      }
+      #path label{
+        display: block;
+      }
+      #process{
+        background: #efefef;
+      }
+      #gulp{
+        background: rgb(240,240,240);
+        background: linear-gradient(189deg, rgba(240,240,240,0.5) 0%, rgba(190,190,190,0.5) 100%);
+      }
+      #gulp h3{
+        margin-top: 0;
+      }
+      #stats{
+        border-top: 1px solid #eee;
+      }
+      #stats span{
+        display: inline-block;
+        margin: 0 .5rem;
+        font-size: 12px;
+      }
+      #cwd #input{
+        margin-top: 2rem;
+      }
+      #logs{
+        font-size: 12px;
+        text-align: left;
+      }
+      #logs textarea{
+        margin: 0 auto;
+        display: block;
+        width: 520px;
+        background: black;
+        color: #00ca00;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0 5px 30px -1px #999;
+        padding: 1rem;
+      }
+      #gulpLogo{
+        width: 5rem;
+        height: 7rem;
+      }
+      #cwd{
+        width: 50rem;
+        padding: 1rem;
+        background: #f2f2f2;
+        box-shadow: inset 0 0 13px 2px rgba(0, 0, 0, 0.05);
+        border: 0;
+      }
+      header{
+        display: flex;
+        justify-content: center;
+      }
+      header h1{
+        align-self: center;
+        margin-left: 10px;
+      }
+      button{
+        background: #cf4647;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+      }
+      #package-found{
+        display: none;
+        width: 240px;
+        margin: 2rem auto 0 auto;
+        padding: .5rem;
+        background: #e0fbd6;
+        border: 1px solid #00ca00;
+        border-radius: 15px;
+        font-size: 20px;
+      }
+      #package-found.active #foundParty{
+        animation: successPulse  .5s ease-in-out 3 alternate;
+        -webkit-animation: successPulse  .5s ease-in-out 3 alternate;
+        display: inline-block;
+      }
+      #package-found.active #foundFace{
+        animation: successSpin 500ms linear 3;
+        -webkit-animation: successSpin 500ms linear 3;
+        display: inline-block;
+      }
+      @keyframes successPulse {
+          0% {
+              transform: scale(1.0);
+          }
+          50% {
+              transform: scale(1.5);
+          }
+          100% {
+              transform: scale(1.0);
+          }
+      }
+      @keyframes successSpin {
+    to {transform:rotate(360deg);}
+}
+
+      #package-found svg{
+        width: 1rem;
+        margin-bottom: -2px;
+        margin-right: 5px;
+      }
+      #package-missing{
+        width: 240px;
+        margin: 2rem auto 0 auto;
+        padding: .5rem;
+        background: #ffd0d1;
+        border: 1px solid #cf4647;
+        border-radius: 15px;
+        font-size: 20px;
+      }
+      #package-missing svg{
+        width: 1rem;
+      }
+      button:disabled,
+      button[disabled]{
+        background: #aaa;
+        cursor: not-allowed;
+        color: #eee;
+        transition: all 1s;
+      }
+
+    </style>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+    <header>
+      <img src="gulp.svg" id="gulpLogo">
+      <h1>Slurp v1.0</h1>
+    </header>
+
+    <div class="container" id="path">
+      <!-- All of the Node.js APIs are available in this renderer process. -->
+      <div id="input">
+        <label>Current directory </label>
+        <input type="text" id="cwd" placeholder="Current directory"></input>
+      </div>
+      <div id="package-missing">
+          <span>🤬</span>&nbsp;Gulpfile not found&nbsp;<span>⛔️</span>
+      </div>  
+      <div id="package-found">       
+        <span id="foundFace">😃</span>&nbsp;Gulpfile found&nbsp;<span id="foundParty">🎉</span>
+      </div>  
+    </div>
+
+    <!-- <div class="container" id="process">
+      <button id="open-file-manager">Open Current Folder</button>
+    </div> -->
+
+    <div class="container" id="gulp">
+      <h3>Gulp Functions</h3>
+      <button id="installs">NPM Installer</button>
+      <button id="link">NPM Link</button>
+      <button id="sass">Compile SASS</button>
+      <button id="package">Package</button>
+      <button id="viewer">Viewer</button>
+      <!-- <button id="packageView">Banner Viewer</button>
+      <button id="sass">SASS</button> -->
+    </div>
+
+
+    <div class="container" id="logs">
+      <textarea rows="18" cols="30" id="logText">
+      </textarea>
+    </div>
+
+    <div class="container" id="stats">
+      <span>You are using Node.js <script>document.write(process.versions.node)</script></span>
+      <span>Chromium <script>document.write(process.versions.chrome)</script></span>
+      <span>Electron <script>document.write(process.versions.electron)</script></span>
+    </div>
 
     <script>
       // You can also require other files to run in this process

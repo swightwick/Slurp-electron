@@ -3,8 +3,17 @@
   "version": "1.0.0",
   "description": "A minimal Electron application",
   "main": "main.js",
+  "build": {
+    "appId": "slurp",
+    "mac": {
+      "category": ""
+    },
+    "files": []
+  },
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-packager ."
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -17,6 +26,15 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^2.0.0"
+    "electron": "^2.0.7",
+    "electron-builder": "^20.28.4",
+    "electron-packager": "^12.1.2"
+  },
+  "dependencies": {
+    "current-path": "^2.0.0",
+    "electron-sudo": "^4.0.12",
+    "gulp": "^3.9.1",
+    "howler": "^2.0.15",
+    "sudo-prompt": "^8.2.3"
   }
 }

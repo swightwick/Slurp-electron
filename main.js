@@ -1,5 +1,8 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
+const userDataPath = app.getPath ('userData');
+const console = require('console');
+// const gulp = require('gulp');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -7,10 +10,11 @@ let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({width: 860, height: 866})
 
   // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
+  mainWindow.loadFile('index.html');
+  mainWindow.openDevTools();
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
@@ -23,6 +27,7 @@ function createWindow () {
     mainWindow = null
   })
 }
+
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -45,6 +50,7 @@ app.on('activate', function () {
     createWindow()
   }
 })
+
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
